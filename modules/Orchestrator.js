@@ -29,7 +29,7 @@ async function info(req, res) {
      uri: `${Nodes[req.params.node]}/server`,
      body: req.body,
      json: true
-   }).then(JSON.parse).catch(error))
+   }).catch(error))
  }
 
  async function remove(req, res) {
@@ -45,7 +45,7 @@ async function info(req, res) {
      uri: `${Nodes[req.params.node]}/server/${req.params.server}`,
      body: req.body,
      json: true
-   }).then(JSON.parse).catch(error))
+   }).catch(error))
  }
 
 module.exports = { node, list, info, create, remove, action }

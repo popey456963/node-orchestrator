@@ -21,12 +21,11 @@ app.use((req, res, next) => {
   })
 })
 
-app.use(Orchestrator.node)
-app.get('/:node', Orchestrator.list)
-app.get('/:node/:server', Orchestrator.info)
-app.post('/:node', Orchestrator.create)
-app.delete('/:node/:server', Orchestrator.remove)
-app.post('/:node/:server', Orchestrator.action)
+app.get('/:node', Orchestrator.node, Orchestrator.list)
+app.get('/:node/:server', Orchestrator.node, Orchestrator.info)
+app.post('/:node', Orchestrator.node, Orchestrator.create)
+app.delete('/:node/:server', Orchestrator.node, Orchestrator.remove)
+app.post('/:node/:server', Orchestrator.node, Orchestrator.action)
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
