@@ -1,4 +1,4 @@
-const ServerList = require('../configs/Servers.js')
+const NodeList = require('../configs/Nodes.js')
 
 /*
  * Node() { id, url }
@@ -7,8 +7,8 @@ const ServerList = require('../configs/Servers.js')
 class Node {
   constructor(node) {
     this.id = node
-    if (node in ServerList) {
-      this.url = ServerList[node]
+    if (node in NodeList) {
+      this.url = NodeList[node]
     } else {
       throw new Error(`Invalid node ${node}`)
     }

@@ -12,14 +12,14 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 if (process.env.NODE_ENV === 'production' && !process.env.KEY) throw new Error('Error, universal key not given.')
 
-global.Servers = {
+global.Nodes = {
   // <id>: <GameServer>
 }
 
 // id: String (<node>-<server_id>)
 async function getServer(id) {
-  if (id in Servers) {
-    return Servers[id]
+  if (id in Nodes) {
+    return Nodes[id]
   }
 
   let node, server_id
@@ -29,9 +29,9 @@ async function getServer(id) {
     node = id
   }
 
-  Servers[id] = new GameServer(new Node(node), server_id)
-  return Servers[id]
-  // return await Servers[id].initialise()
+  Nodes[id] = new GameServer(new Node(node), server_id)
+  return Nodes[id]
+  // return await Nodes[id].initialise()
 }
 
 function checkPermissions(req, res, next) {
